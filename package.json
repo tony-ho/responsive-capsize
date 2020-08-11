@@ -28,6 +28,11 @@
     "semi": false,
     "singleQuote": true
   },
+  "release": {
+    "branches": [
+      "main"
+    ]
+  },
   "name": "responsive-capsize",
   "author": "Tony Ho",
   "repository": {
