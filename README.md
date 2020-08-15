@@ -1,10 +1,10 @@
 # Responsive Capsize
 
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000" />
-  <img src="https://img.shields.io/badge/node-%3E%3D10-blue.svg" />
+  <img alt="Version" src="https://img.shields.io/npm/v/responsive-capsize" />
+  <img src="https://img.shields.io/node/v/responsive-capsize" />
   <a href="#" target="_blank">
-    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
+    <img alt="License: MIT" src="https://img.shields.io/npm/l/responsive-capsize" />
   </a>
 </p>
 
