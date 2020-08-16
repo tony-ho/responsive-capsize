@@ -8,7 +8,7 @@
   </a>
 </p>
 
-> Responsive Capsize provides an alternative to generating [Capsize](https://seek-oss.github.io/capsize/) styles for different breakpoints and combining them manually into the responsive arrays format used by [Styled System](https://styled-system.com/), [Theme UI](https://theme-ui.com/), and others.
+> Responsive Capsize generates [Capsize](https://seek-oss.github.io/capsize/) text styles for multiple breakpoints using responsive arrays.
 
 ## Install
 
@@ -18,18 +18,75 @@ npm install responsive-capsize
 
 ## Usage
 
+Use the [Capsize website](https://seek-oss.github.io/capsize/) to find the `fontMetrics` values for the specified font.
+
+Responsive Capsize accepts [responsive arrays](https://styled-system.com/css/#responsive-arrays) for the following input values:
+
+- `capHeight` or `fontSize` for defining the size of text
+- `lineGap` or `leading` for specifying line height. If you pass neither, the text will follow the default spacing of the specified font eg. `line-height: normal`
+
+See the [Capsize documentation](https://github.com/seek-oss/capsize/blob/master/packages/capsize/README.md) for further information.
+
 ```js
 import responsiveCapsize from 'responsive-capsize'
 
-const styles = responsiveCapsize({
-  capHeight: [16, 32],
-  lineGap: [8, 16],
-  fontMetrics: {
-    capHeight: 700,
-    ascent: 1058,
-    descent: -291,
-    lineGap: 0,
-    unitsPerEm: 1000
-  }
+const fontMetrics = {
+  capHeight: 1456,
+  ascent: 1900,
+  descent: -500,
+  lineGap: 0,
+  unitsPerEm: 2048
+}
+
+const capsizedTextStyles = responsiveCapsize({
+  fontMetrics,
+  capHeight: [24, 48],
+  lineGap: [12, 24]
 })
+```
+
+## Examples
+
+The output styles can be used in the following ways.
+
+Included in a [Theme UI styles object](https://theme-ui.com/theme-spec#styles):
+
+```js
+export default {
+  styles: {
+    h1: {
+      fontFamily: 'heading',
+      fontWeight: 'heading',
+      ...capsizedTextStyles
+    }
+  }
+}
+```
+
+Added to an element using [Theme UI's `sx` prop](https://theme-ui.com/sx-prop):
+
+```js
+export default props => (
+  <h1
+    sx={{
+      ...capsizedTextStyles
+    }}
+  >
+    Responsive Heading
+  </h1>
+)
+```
+
+Added to an element using [Styled System's `css` prop](https://styled-system.com/css):
+
+```js
+export default props =>
+  <h1
+    css={css({
+      ...capsizedTextStyles
+    }}
+  >
+    Responsive Heading
+  </h1>
+)
 ```
