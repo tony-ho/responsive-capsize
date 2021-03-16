@@ -34,18 +34,15 @@ export type ResponsiveCapsizeOptions =
 export type ResponsiveCapsizeStyles = {
   fontSize: string[]
   lineHeight: string[]
-  padding: string
   '::before': {
-    content: string
-    marginTop: string[]
-    display: string
-    height: number
-  }
-  '::after': {
     content: string
     marginBottom: string[]
     display: string
-    height: number
+  }
+  '::after': {
+    content: string
+    marginTop: string[]
+    display: string
   }
 }
 
@@ -129,11 +126,11 @@ function mergeCapsizeStyles(styles: CapsizeStyles[]): ResponsiveCapsizeStyles {
     lineHeight: styles.map(s => s.lineHeight),
     '::before': {
       ...styles[0]['::before'],
-      marginTop: styles.map(s => s['::before'].marginTop)
+      marginBottom: styles.map(s => s['::before'].marginBottom)
     },
     '::after': {
       ...styles[0]['::after'],
-      marginBottom: styles.map(s => s['::after'].marginBottom)
+      marginTop: styles.map(s => s['::after'].marginTop)
     }
   }
 }

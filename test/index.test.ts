@@ -128,13 +128,10 @@ describe('matches Capsize output', () => {
     actual: ResponsiveCapsizeStyles
   ) {
     assertResponsiveStyles([expected], actual)
-    expect(actual.padding).toEqual(expected.padding)
     expect(actual['::before'].content).toEqual(expected['::before'].content)
     expect(actual['::before'].display).toEqual(expected['::before'].display)
-    expect(actual['::before'].height).toEqual(expected['::before'].height)
     expect(actual['::after'].content).toEqual(expected['::after'].content)
     expect(actual['::after'].display).toEqual(expected['::after'].display)
-    expect(actual['::after'].height).toEqual(expected['::after'].height)
   }
 
   test('arrays of same length', () => {
@@ -354,14 +351,14 @@ describe('matches Capsize output', () => {
     expect(actual.lineHeight.length).toEqual(expected.length)
     actual.lineHeight.map((s, i) => expect(s).toEqual(expected[i].lineHeight))
 
-    expect(actual['::before'].marginTop.length).toEqual(expected.length)
-    actual['::before'].marginTop.map((s, i) =>
-      expect(s).toEqual(expected[i]['::before'].marginTop)
+    expect(actual['::before'].marginBottom.length).toEqual(expected.length)
+    actual['::before'].marginBottom.map((s, i) =>
+      expect(s).toEqual(expected[i]['::before'].marginBottom)
     )
 
-    expect(actual['::after'].marginBottom.length).toEqual(expected.length)
-    actual['::after'].marginBottom.map((s, i) =>
-      expect(s).toEqual(expected[i]['::after'].marginBottom)
+    expect(actual['::after'].marginTop.length).toEqual(expected.length)
+    actual['::after'].marginTop.map((s, i) =>
+      expect(s).toEqual(expected[i]['::after'].marginTop)
     )
   }
 })
