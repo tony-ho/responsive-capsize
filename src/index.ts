@@ -1,5 +1,7 @@
-import capsize, { CapsizeStyles, FontMetrics } from 'capsize'
+import { createStyleObject, FontMetrics } from '@capsizecss/core'
 import zipWith from 'lodash.zipwith'
+
+type CapsizeStyles = ReturnType<typeof createStyleObject>
 
 type CapHeightWithLeading = {
   capHeight: number[]
@@ -60,7 +62,7 @@ export default function responsiveCapsize(
       const { leading } = options
       return mergeCapsizeStyles(
         zipWith(capHeight, leading, (c, l) =>
-          capsize({
+          createStyleObject({
             capHeight: c ?? capHeight[capHeight.length - 1],
             leading:
               l ??
@@ -77,7 +79,7 @@ export default function responsiveCapsize(
     }
     return mergeCapsizeStyles(
       zipWith(capHeight, lineGap, (c, l) =>
-        capsize({
+        createStyleObject({
           capHeight: c ?? capHeight[capHeight.length - 1],
           lineGap: l ?? lineGap[lineGap.length - 1],
           fontMetrics
@@ -94,7 +96,7 @@ export default function responsiveCapsize(
     const { leading } = options
     return mergeCapsizeStyles(
       zipWith(fontSize, leading, (f, l) =>
-        capsize({
+        createStyleObject({
           fontSize: f ?? fontSize[fontSize.length - 1],
           leading:
             l ?? (leading.length > 0 ? leading[leading.length - 1] : undefined),
@@ -110,7 +112,7 @@ export default function responsiveCapsize(
   }
   return mergeCapsizeStyles(
     zipWith(fontSize, lineGap, (f, l) =>
-      capsize({
+      createStyleObject({
         fontSize: f ?? fontSize[fontSize.length - 1],
         lineGap: l ?? lineGap[lineGap.length - 1],
         fontMetrics

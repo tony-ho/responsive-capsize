@@ -1,5 +1,7 @@
-import capsize, { CapsizeStyles } from 'capsize'
+import { createStyleObject } from '@capsizecss/core'
 import responsiveCapsize, { ResponsiveCapsizeStyles } from '../src'
+
+type CapsizeStyles = ReturnType<typeof createStyleObject>
 
 const fontMetrics = {
   capHeight: 1456,
@@ -74,7 +76,7 @@ describe('options validation', () => {
 describe('matches Capsize output', () => {
   test('capHeight with leading', () => {
     const options = { capHeight: 48, leading: 72 }
-    const capsizeStyles = capsize({ fontMetrics, ...options })
+    const capsizeStyles = createStyleObject({ fontMetrics, ...options })
     const styles = responsiveCapsize({
       fontMetrics,
       capHeight: [options.capHeight],
@@ -87,7 +89,7 @@ describe('matches Capsize output', () => {
   test('capHeight with lineGap', () => {
     const options = { capHeight: 48, lineGap: 24 }
 
-    const capsizeStyles = capsize({ fontMetrics, ...options })
+    const capsizeStyles = createStyleObject({ fontMetrics, ...options })
     const styles = responsiveCapsize({
       fontMetrics,
       capHeight: [options.capHeight],
@@ -100,7 +102,7 @@ describe('matches Capsize output', () => {
   test('fontSize with leading', () => {
     const options = { fontSize: 48, leading: 72 }
 
-    const capsizeStyles = capsize({ fontMetrics, ...options })
+    const capsizeStyles = createStyleObject({ fontMetrics, ...options })
     const styles = responsiveCapsize({
       fontMetrics,
       fontSize: [options.fontSize],
@@ -113,7 +115,7 @@ describe('matches Capsize output', () => {
   test('fontSize with lineGap', () => {
     const options = { fontSize: 48, lineGap: 24 }
 
-    const capsizeStyles = capsize({ fontMetrics, ...options })
+    const capsizeStyles = createStyleObject({ fontMetrics, ...options })
     const styles = responsiveCapsize({
       fontMetrics,
       fontSize: [options.fontSize],
@@ -138,12 +140,12 @@ describe('matches Capsize output', () => {
     const capHeight = [48, 96]
     const lineGap = [24, 48]
 
-    const firstCapsizeStyles = capsize({
+    const firstCapsizeStyles = createStyleObject({
       fontMetrics,
       capHeight: capHeight[0],
       lineGap: lineGap[0]
     })
-    const secondCapsizeStyles = capsize({
+    const secondCapsizeStyles = createStyleObject({
       fontMetrics,
       capHeight: capHeight[1],
       lineGap: lineGap[1]
@@ -161,12 +163,12 @@ describe('matches Capsize output', () => {
     const capHeight = [48, 96]
     const lineGap = [24]
 
-    const firstCapsizeStyles = capsize({
+    const firstCapsizeStyles = createStyleObject({
       fontMetrics,
       capHeight: capHeight[0],
       lineGap: lineGap[0]
     })
-    const secondCapsizeStyles = capsize({
+    const secondCapsizeStyles = createStyleObject({
       fontMetrics,
       capHeight: capHeight[1],
       lineGap: lineGap[0]
@@ -184,12 +186,12 @@ describe('matches Capsize output', () => {
     const capHeight = [48]
     const lineGap = [24, 48]
 
-    const firstCapsizeStyles = capsize({
+    const firstCapsizeStyles = createStyleObject({
       fontMetrics,
       capHeight: capHeight[0],
       lineGap: lineGap[0]
     })
-    const secondCapsizeStyles = capsize({
+    const secondCapsizeStyles = createStyleObject({
       fontMetrics,
       capHeight: capHeight[0],
       lineGap: lineGap[1]
@@ -207,12 +209,12 @@ describe('matches Capsize output', () => {
     const fontSize = [48, 96]
     const lineGap = [24]
 
-    const firstCapsizeStyles = capsize({
+    const firstCapsizeStyles = createStyleObject({
       fontMetrics,
       fontSize: fontSize[0],
       lineGap: lineGap[0]
     })
-    const secondCapsizeStyles = capsize({
+    const secondCapsizeStyles = createStyleObject({
       fontMetrics,
       fontSize: fontSize[1],
       lineGap: lineGap[0]
@@ -230,12 +232,12 @@ describe('matches Capsize output', () => {
     const fontSize = [48]
     const lineGap = [24, 48]
 
-    const firstCapsizeStyles = capsize({
+    const firstCapsizeStyles = createStyleObject({
       fontMetrics,
       fontSize: fontSize[0],
       lineGap: lineGap[0]
     })
-    const secondCapsizeStyles = capsize({
+    const secondCapsizeStyles = createStyleObject({
       fontMetrics,
       fontSize: fontSize[0],
       lineGap: lineGap[1]
@@ -253,12 +255,12 @@ describe('matches Capsize output', () => {
     const capHeight = [48, 96]
     const leading = [72]
 
-    const firstCapsizeStyles = capsize({
+    const firstCapsizeStyles = createStyleObject({
       fontMetrics,
       capHeight: capHeight[0],
       leading: leading[0]
     })
-    const secondCapsizeStyles = capsize({
+    const secondCapsizeStyles = createStyleObject({
       fontMetrics,
       capHeight: capHeight[1],
       leading: leading[0]
@@ -276,12 +278,12 @@ describe('matches Capsize output', () => {
     const capHeight = [48]
     const leading = [72, 144]
 
-    const firstCapsizeStyles = capsize({
+    const firstCapsizeStyles = createStyleObject({
       fontMetrics,
       capHeight: capHeight[0],
       leading: leading[0]
     })
-    const secondCapsizeStyles = capsize({
+    const secondCapsizeStyles = createStyleObject({
       fontMetrics,
       capHeight: capHeight[0],
       leading: leading[1]
@@ -299,12 +301,12 @@ describe('matches Capsize output', () => {
     const fontSize = [48, 96]
     const leading = [72]
 
-    const firstCapsizeStyles = capsize({
+    const firstCapsizeStyles = createStyleObject({
       fontMetrics,
       fontSize: fontSize[0],
       leading: leading[0]
     })
-    const secondCapsizeStyles = capsize({
+    const secondCapsizeStyles = createStyleObject({
       fontMetrics,
       fontSize: fontSize[1],
       leading: leading[0]
@@ -322,12 +324,12 @@ describe('matches Capsize output', () => {
     const fontSize = [48]
     const leading = [72, 144]
 
-    const firstCapsizeStyles = capsize({
+    const firstCapsizeStyles = createStyleObject({
       fontMetrics,
       fontSize: fontSize[0],
       leading: leading[0]
     })
-    const secondCapsizeStyles = capsize({
+    const secondCapsizeStyles = createStyleObject({
       fontMetrics,
       fontSize: fontSize[0],
       leading: leading[1]
